@@ -1,0 +1,10 @@
+venv/
+.venv/
+__pycache__/
+
+*.csv
+*.parquet
+
+datasets-project/
+datasets/
+**/datasets/
