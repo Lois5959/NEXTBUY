@@ -85,6 +85,3 @@ Le projet répond notamment aux questions suivantes :
 
 👤 Auteur
 
-Sacha - Étudiant Data Analyst (Projet B-DAT-201)
-
-Ton README est prêt ! Est-ce que tu veux que je rajoute une partie "Bonus" ou des détails sur tes résultats de Machine Learning ?
