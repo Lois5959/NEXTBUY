@@ -83,5 +83,5 @@ Le projet répond notamment aux questions suivantes :
 
     Scikit-Learn : Algorithmes de Machine Learning (Random Forest Regressor).
 
-👤 Auteur
+
 
