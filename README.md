@@ -1,87 +1,164 @@
-🛒 NEXTBUY : De la Donnée Brute aux Décisions Stratégiques
+<div align="center">
 
-📝 Présentation du projet
+# 🛒 NEXTBUY — de la donnée brute aux décisions business
 
-NEXTBUY est un projet d'analyse de données massives portant sur des millions de commandes clients. L'objectif est de transformer ce volume de données en insights business actionnables pour améliorer les revenus, le marketing et l'efficacité opérationnelle d'une enseigne de grande distribution.
+**Analyse de millions de lignes de commandes d'un supermarché en ligne : 12 questions business, un modèle de prédiction et une boutique avec recommandations.**
 
-Objectifs remplis :
+![Python](https://img.shields.io/badge/Python-3.10+-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![pandas](https://img.shields.io/badge/pandas-150458?style=for-the-badge&logo=pandas&logoColor=white)
+![seaborn](https://img.shields.io/badge/seaborn-4C72B0?style=for-the-badge)
+![scikit-learn](https://img.shields.io/badge/scikit--learn-F7931E?style=for-the-badge&logo=scikitlearn&logoColor=white)
+![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)
+![Jupyter](https://img.shields.io/badge/Jupyter-F37626?style=for-the-badge&logo=jupyter&logoColor=white)
 
-    Extraction de 8 insights business sous forme de questions/réponses.
+<img src="docs/heatmap-commandes.png" alt="Heatmap des commandes par jour et par heure" width="75%">
 
-    Prétraitement et nettoyage complet des datasets.
+<sub>Quand les clients commandent : pics le dimanche et le lundi, entre 9 h et 16 h.</sub>
 
-    Analyse exploratoire des données (EDA) avec graphiques avancés.
+</div>
 
-    Création et comparaison de modèles de Machine Learning (Random Forest, etc.).
+---
 
-    🚀 Installation et Configuration
+## 🎯 En bref
 
-Pour faire fonctionner ce projet sur votre machine, suivez les étapes ci-dessous :
-1. Cloner le projet
-git clone https://github.com/votre-username/B-DAT-201-nextbuy-3.git
-cd B-DAT-201-nextbuy-3
+Une enseigne de grande distribution veut comprendre ses clients pour **augmenter son chiffre d'affaires,
+mieux cibler son marketing et organiser sa logistique**. Le projet suit tout le parcours d'un data analyst :
 
-2. Créer l'environnement virtuel
+| Étape | Livrable |
+|---|---|
+| 🧹 **Nettoyage** | 5 tables fusionnées (produits, rayons, départements, commandes, lignes de commande), doublons et colonnes inutiles retirés → [`notebook.ipynb`](notebook.ipynb) |
+| 📊 **Analyse** | 12 questions business, chacune avec un graphique, une analyse et une **réponse business** → [`notebook_graph.ipynb`](notebook_graph.ipynb) |
+| 🤖 **Modèle** | Prédiction de la taille d'un panier (Random Forest) → [`modele.ipynb`](modele.ipynb) |
+| 🛍️ **Application** | Boutique Streamlit qui recommande des produits achetés ensemble (k plus proches voisins) → [`yanis/app.py`](yanis/app.py) |
 
-Il est fortement recommandé d'utiliser un environnement isolé pour éviter les conflits entre vos projets.
-# Création de l'environnement
-python -m venv .venv
+GitHub affiche les notebooks **avec leurs graphiques** : cliquez sur un lien pour voir l'analyse complète.
 
-# Activation (Linux/macOS)
-source .venv/bin/activate
+---
 
-# Activation (Windows)
-.venv\Scripts\activate
+## 🔍 Ce que disent les données
 
-3. Installation des outils (Jupyter & Librairies)
+<table>
+<tr>
+<td width="50%"><img src="docs/premier-article.png" alt="Produits ajoutés en premier"></td>
+<td width="50%"><img src="docs/taille-panier.png" alt="Distribution de la taille des paniers"></td>
+</tr>
+<tr>
+<td><b>La banane ouvre le panier.</b> C'est de loin le produit ajouté en premier : un produit d'appel idéal
+à mettre en avant en page d'accueil.</td>
+<td><b>Des petits paniers.</b> La plupart des commandes contiennent entre 3 et 8 articles : il y a de la marge
+pour la vente croisée.</td>
+</tr>
+<tr>
+<td><img src="docs/achete-avec-chocolat.png" alt="Produits achetés avec du chocolat"></td>
+<td><img src="docs/probabilite-rachat.png" alt="Produits les plus rachetés"></td>
+</tr>
+<tr>
+<td><b>Le chocolat part avec des fruits.</b> Bananes, fraises et épinards bio sont les plus souvent dans le même
+panier : une piste pour des offres groupées.</td>
+<td><b>Le lait fidélise.</b> Les laits (bio, de chèvre, demi-écrémé) sont rachetés dans plus de 83 % des cas :
+des produits à ne jamais laisser en rupture.</td>
+</tr>
+</table>
 
-Une fois l'environnement activé, installez les dépendances nécessaires :
-pip install --upgrade pip
-pip install jupyter pandas numpy matplotlib seaborn scikit-learn
+<details>
+<summary><b>📋 Les 12 questions traitées</b></summary>
 
-📈 Utilisation de Jupyter Notebook
+<br>
 
-Le projet est entièrement contenu dans des fichiers .ipynb.
-Via VS Code (Méthode recommandée)
+1. Quels sont les produits les plus vendus ?
+2. Quel article les clients mettent-ils en premier dans leur panier ?
+3. Quels sont les rayons qui ont le plus de produits ?
+4. Quels sont les rayons qui ont le moins de produits ?
+5. Quelle est la proportion de légumes bio dans les commandes ? *(25 %)*
+6. Quand les clients commandent-ils (jour / heure) ?
+7. Comment les clients passent-ils commande (taille du panier) ?
+8. Les clients achètent-ils plus de nourriture pour chats le matin que pour chiens le soir ?
+9. Quels produits faut-il mettre en avant le samedi ?
+10. Dans quels rayons observe-t-on le plus de racheteurs ?
+11. Qu'est-ce que les gens achètent souvent avec du chocolat ?
+12. Quels produits ont la plus forte probabilité d'être rachetés ?
 
-    Ouvrez le dossier du projet dans VS Code.
+</details>
 
-    Installez l'extension "Jupyter" si ce n'est pas déjà fait.
+---
 
-    Ouvrez le fichier notebook.ipynb.
+## 🤖 Le modèle : prédire la taille d'un panier
 
-    En haut à droite, cliquez sur "Select Kernel" et choisissez votre environnement .venv.
+<table>
+<tr>
+<td width="55%"><img src="docs/modele-performance.png" alt="Taille prédite contre taille réelle"></td>
+<td width="45%">
 
-    Cliquez sur "Run All" pour exécuter tout le code.
+Pour les commandes du rayon **boulangerie**, un **Random Forest** prédit le nombre d'articles du panier à
+partir du jour, de l'heure, du délai depuis la commande précédente et de la taille moyenne des paniers du client.
 
-Via le navigateur
+| Mesure | Résultat |
+|---|---|
+| **R²** | **0,58** |
+| **MAE** | **4,25 articles** |
 
-    Lancez le serveur dans votre terminal :
-    jupyter notebook
+**Limite connue** : la taille moyenne des paniers du client est calculée en incluant la commande à prédire.
+Le score est donc un peu optimiste ; la prochaine version calculera cette moyenne sur les commandes
+précédentes uniquement.
 
-    Dans l'interface qui s'ouvre, sélectionnez notebook.ipynb et exécutez les cellules.
+</td>
+</tr>
+</table>
 
-📂 Aperçu de l'analyse
+---
 
-Le projet répond notamment aux questions suivantes :
+## ⚡ Lancer le projet
 
-    Top Produits : Quels sont les articles les plus vendus et les plus rachetés ?
+```bash
+git clone https://github.com/Lois5959/NEXTBUY.git
+cd NEXTBUY
+python -m venv .venv && source .venv/bin/activate
+pip install -r requirements.txt
+```
 
-    Comportement Horaire : À quelle heure les clients commandent-ils le plus en boulangerie ?
+**Les données ne sont pas dans le dépôt** (plusieurs centaines de Mo). Placez les 5 fichiers CSV fournis
+(au format du jeu de données public *Instacart Market Basket Analysis*) dans `datasets-project/datasets/` :
 
-    Associations : Quels produits sont fréquemment achetés avec le chocolat ?
+```
+datasets-project/datasets/
+├── aisles.csv
+├── departments.csv
+├── order_products.csv
+├── orders.csv
+└── products.csv
+```
 
-    Prédiction : Pouvons-nous prédire la taille du panier moyen (Score R2 obtenu : 0.58) ?
+Puis exécutez les notebooks **dans cet ordre** (VS Code avec l'extension Jupyter, ou `jupyter notebook`) :
 
-🛠️ Outils & Packages
+1. `notebook.ipynb` : nettoyage et création de `df_clean.csv`
+2. `notebook_graph.ipynb` : les 12 analyses
+3. `modele.ipynb` : le modèle
 
-    Python 3.x
+Et pour la boutique avec recommandations :
 
-    Pandas : Manipulation et nettoyage des données.
+```bash
+streamlit run yanis/app.py
+```
 
-    Matplotlib & Seaborn : Visualisation de données (Graphiques en barres, lignes, nuages de points).
+## 📁 Structure
 
-    Scikit-Learn : Algorithmes de Machine Learning (Random Forest Regressor).
+```
+.
+├── notebook.ipynb          # 1. nettoyage et fusion des tables
+├── notebook_graph.ipynb    # 2. analyses et réponses business
+├── modele.ipynb            # 3. prédiction de la taille du panier
+├── yanis/
+│   ├── app.py              # boutique Streamlit + recommandations (KNN)
+│   └── test.ipynb          # exploration du système de recommandation
+├── docs/                   # graphiques de ce README
+└── requirements.txt
+```
 
+---
 
+<div align="center">
 
+Projet d'équipe du module **B-DAT-201** · Bachelor Epitech Lille
+**Loïs-Elie Ekollo** · Sacha · Yanis
+
+</div>
