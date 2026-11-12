@@ -1,8 +1,14 @@
+import os
+from pathlib import Path
+
 import streamlit as st
 import pandas as pd
 import numpy as np
 from scipy.sparse import csr_matrix
 from sklearn.neighbors import NearestNeighbors
+
+# dossier des datasets (même emplacement que pour les notebooks)
+DATA_DIR = Path(os.getenv("NEXTBUY_DATA", Path(__file__).resolve().parent.parent / "datasets-project" / "datasets"))
 
 # config page
 st.set_page_config(page_title="Boutique BDE", page_icon="🛍️", layout="wide")
@@ -16,8 +22,8 @@ if 'cart' not in st.session_state:
 def load_data_and_model():
     
     # chargement csv
-    df_products = pd.read_csv('products.csv')
-    df_orders = pd.read_csv('order_products.csv') 
+    df_products = pd.read_csv(DATA_DIR / 'products.csv', on_bad_lines='skip')
+    df_orders = pd.read_csv(DATA_DIR / 'order_products.csv') 
     
     # nettoyage
     df_orders = df_orders.dropna(subset=['order_id', 'product_id'])
