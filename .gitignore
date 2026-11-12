@@ -1,7 +1,9 @@
 venv/
 .venv/
 __pycache__/
+.ipynb_checkpoints/
 
+# données (trop volumineuses pour Git)
 *.csv
 *.parquet
 
